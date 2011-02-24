@@ -1,0 +1,9 @@
+[submodule "vendor/mustache.php"]
+	path = vendor/mustache.php
+	url = https://github.com/bobthecow/mustache.php.git
+[submodule "vendor/simplepie"]
+	path = vendor/simplepie
+	url = https://github.com/simplepie/simplepie.git
+[submodule "vendor/datamapper"]
+	path = vendor/datamapper
+	url = https://github.com/vlucas/phpDataMapper.git
