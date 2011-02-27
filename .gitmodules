@@ -4,6 +4,6 @@
 [submodule "vendor/simplepie"]
 	path = vendor/simplepie
 	url = https://github.com/simplepie/simplepie.git
-[submodule "vendor/datamapper"]
-	path = vendor/datamapper
+[submodule "vendor/phpDataMapper"]
+	path = vendor/phpDataMapper
 	url = https://github.com/vlucas/phpDataMapper.git
