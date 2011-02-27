@@ -1,0 +1,35 @@
+<script>
+	$(function(){
+		$('#username').select().focus();
+	});
+</script>
+
+{{#errors_exist}}
+	<ul id="errors">
+	{{#errors}}
+		<li>{{message}}</li>
+	{{/errors}}
+	</ul>
+{{/errors_exist}}
+
+<form action="{{webroot}}/" method="post">
+	<input type="hidden" name="c" value="user" />
+	<input type="hidden" name="a" value="create" />
+	<ul>
+		<li>
+			<label>Username</label>
+			<input type="text" name="username" id="username" value="admin" />
+		</li>
+		<li>
+			<label>Password</label>
+			<input type="password" name="password" id="password" />
+		</li>
+		<li>
+			<label>Retype Password</label>
+			<input type="password" name="password2" id="password2" />
+		</li>
+		<li class="submit">
+			<input type="submit" value="Create User" />
+		</li>
+	</ul>
+</form>

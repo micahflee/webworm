@@ -10,7 +10,7 @@ require('vendor/phpDataMapper/Adapter/Mysql.php');
 try {
 	$adapter = new phpDataMapper_Adapter_Mysql($config['mysql_host'], $config['mysql_database'], $config['mysql_username'], $config['mysql_password']);
 } catch(Exception $e) {
-	echo($views->render("database_error", array('error' => $e->getMessage())));
+	echo($views->render_partial("error/database_error", array('error' => $e->getMessage())));
 	exit();
 }
 
@@ -22,4 +22,12 @@ while($filename = readdir($dir)) {
 }
 closedir($dir);
 
+// load all the controllers
+$controllers = array();
+$dir = opendir('controllers');
+while($filename = readdir($dir)) {
+	if($filename == "." || $filename == "..") continue;
+	require("controllers/$filename");
+}
+closedir($dir);
 
