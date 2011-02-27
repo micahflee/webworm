@@ -29,6 +29,12 @@ class Views {
 		return $this->_m->render($html, $data);
 	}
 
+	public function error500() {
+		header('HTTP/1.1 500 Internal Server Error');
+		echo($this->render_partial('error/500'));
+		exit();
+	}
+
 	// private functions
 	private function _add_webroot($data) {
 		global $config;

@@ -8,6 +8,10 @@ class UserModel extends phpDataMapper_Base {
   public $username = array('type' => 'string', 'required' => true);
   public $password = array('type' => 'string', 'required' => true);
 	public $date_created = array('type' => 'datetime');
+
+	public function password($password) {
+		return sha1($password);
+	}
 }
 
 class User extends phpDataMapper_Entity {

@@ -4,14 +4,6 @@ class UserController extends ApplicationController {
 	public function login_screen() {
 		global $models, $views;
 
-		// do we need to create a new user?
-		if($models['user']->first() == false) {
-			$views->template = 'setup/layout';
-			$views->render('setup/first_user');
-			return;
-		}
-		
-		// render the login view
 		$views->template = 'public/layout';
 		$views->render('public/login_screen', array('title' => 'Welcome to Webworm'));
 	}

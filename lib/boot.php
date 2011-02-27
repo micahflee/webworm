@@ -7,6 +7,10 @@ session_start();
 require('lib/views.php');
 $views = new Views;
 
+// start helpers
+require('lib/helpers.php');
+$helpers = new Helpers;
+
 // set up the database
 require('vendor/phpDataMapper/Base.php');
 require('vendor/phpDataMapper/Adapter/Mysql.php');
