@@ -1,23 +1,15 @@
 <?php
 
-class UserController extends ApplicationController {
-	public function login_screen() {
-		global $models, $views;
-
-		// do we need to create a new user?
-		if($models['user']->first() == false) {
-			$views->template = 'setup/layout';
-			$views->render('setup/first_user');
-			return;
-		}
-		
-		// render the login view
-		$views->template = 'public/layout';
-		$views->render('public/login_screen', array('title' => 'Welcome to Webworm'));
-	}
-	
+class SetupController extends ApplicationController {
 	public function create_first_user() {
 		global $models, $views;
+
+		// this is only allowed if there are no users
+		if($models['user']->first() != false) {
+			$views->error500();
+		}
+
+		// set the layout
 		$views->template = 'setup/layout';
 
 		// check that passwords match
@@ -46,11 +38,7 @@ class UserController extends ApplicationController {
 			$views->render('setup/first_user', array('errors' => $errors));
 		}
 	}
-
-	public function login() {
-	}
-
 }
 
-$controllers['user'] = new UserController();
+$controllers['setup'] = new SetupController();
 

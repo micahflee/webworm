@@ -19,5 +19,5 @@ class User extends phpDataMapper_Entity {
 	}
 }
 
-$User = new UserModel($adapter);
-$User->migrate();
+$models['user'] = new UserModel($adapter);
+$models['user']->migrate();

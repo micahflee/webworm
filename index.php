@@ -4,8 +4,8 @@ require('lib/boot.php');
 
 // route the request
 $method = strtolower($_SERVER['REQUEST_METHOD']);
-$controller = isset($_REQUEST['c']) ? $_REQUEST['c'] : 'dashboard';
-$action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
+$controller = isset($_REQUEST['c']) ? $_REQUEST['c'] : 'user';
+$action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'login_screen';
 
 // valid controller?
 $valid = true;

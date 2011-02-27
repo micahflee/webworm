@@ -8,5 +8,5 @@ class FeedModel extends phpDataMapper_Base {
     public $date_created = array('type' => 'datetime');
 }
 
-$Feed = new FeedModel($adapter);
-$Feed->migrate();
+$models['feed'] = new FeedModel($adapter);
+$models['feed']->migrate();

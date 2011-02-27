@@ -9,5 +9,5 @@ class UserFeedModel extends phpDataMapper_Base {
     public $date_created = array('type' => 'datetime');
 }
 
-$UserFeed = new UserFeedModel($adapter);
-$UserFeed->migrate();
+$models['user_feed'] = new UserFeedModel($adapter);
+$models['user_feed']->migrate();

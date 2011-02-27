@@ -1,5 +1,8 @@
 <?php
 
+// start the session
+session_start();
+
 // start views
 require('lib/views.php');
 $views = new Views;
@@ -15,6 +18,7 @@ try {
 }
 
 // load all the models
+$models = array();
 $dir = opendir('models');
 while($filename = readdir($dir)) {
 	if($filename == "." || $filename == "..") continue;
@@ -24,9 +28,10 @@ closedir($dir);
 
 // load all the controllers
 $controllers = array();
+require('controllers/application.php');
 $dir = opendir('controllers');
 while($filename = readdir($dir)) {
-	if($filename == "." || $filename == "..") continue;
+	if($filename == "." || $filename == ".." || $filename == "application.php") continue;
 	require("controllers/$filename");
 }
 closedir($dir);
