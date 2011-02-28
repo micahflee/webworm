@@ -40,3 +40,7 @@ while($filename = readdir($dir)) {
 }
 closedir($dir);
 
+// set up phpass password hashing framework
+require('vendor/phpass/PasswordHash.php');
+$phpass = new PasswordHash(8, false);
+

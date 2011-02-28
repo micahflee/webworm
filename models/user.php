@@ -10,7 +10,8 @@ class UserModel extends phpDataMapper_Base {
 	public $date_created = array('type' => 'datetime');
 
 	public function password($password) {
-		return sha1($password);
+		global $phpass;
+		return $phpass->HashPassword($password);		
 	}
 }
 
@@ -20,6 +21,11 @@ class User extends phpDataMapper_Entity {
 			"SELECT * FROM feeds LEFT JOIN user_feeds ON user_feeds.feed_id = feeds.id WHERE user_feeds.user_id = :user_id", 
 			array('user_id' => $this->id)
 		);
+	}
+
+	public function verify_password($password) {
+		global $phpass;
+		return $phpass->CheckPassword($password, $this->password);
 	}
 }
 
