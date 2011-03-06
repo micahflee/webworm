@@ -11,9 +11,8 @@ $action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
 $session->check_for_login();
 $controllers['setup']->check_for_setup();
 
-if($config['debug']) {
-	echo("<pre style=\"text-align:center; background-color:black; color:#999999; padding:5px; margin:0;\">c: $controller - a: $action - ".($session->logged_in() ? "logged in" : "not logged in")."</pre>");
-}
+// display debug info if debug mode is enabled
+$helpers->display_debug_info();
 
 // route the request
 $valid = true;

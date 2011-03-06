@@ -4,13 +4,9 @@
 	});
 </script>
 
-{{#errors_exist}}
-	<ul id="errors">
-	{{#errors}}
-		<li>{{message}}</li>
-	{{/errors}}
-	</ul>
-{{/errors_exist}}
+{{#error}}
+<p id="errors">Invalid username or password</p>
+{{/error}}
 
 <form action="{{webroot}}/" method="post">
 	<input type="hidden" name="c" value="user" />

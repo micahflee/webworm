@@ -24,7 +24,9 @@ class Session {
 		
 		if($controller != 'setup' && !$this->logged_in()) {
 			$controller = 'user';
-			$action = 'login_screen';
+			if($action != 'login_screen' && $action != 'login') {
+				$action = 'login_screen';
+			}
 		}
 	}
 }

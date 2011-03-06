@@ -2,7 +2,7 @@
 
 class DashboardController extends ApplicationController {
 	function index() {
-		echo('yay!');
+		echo('yay! <a href="/?c=user&a=logout">log out</a>');
 	}
 }
 
