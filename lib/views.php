@@ -18,7 +18,7 @@ class Views {
 		$content = $this->render_partial($filename, $data, $this->template);
 		$data = $this->_add_webroot($data);
 		$data = $this->_add_content($data, $content);
-		echo $this->render_partial($this->template, array('content' => $content));
+		echo($this->render_partial($this->template, array('content' => $content)));
 		exit();
 	}
 

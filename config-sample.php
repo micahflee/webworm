@@ -1,5 +1,7 @@
 <?php
 
+$config = array();
+
 /* MySQL info */
 $config['mysql_host'] = 'localhost';
 $config['mysql_username'] = '';
@@ -14,3 +16,5 @@ $config['mysql_database'] = '';
  */
 // $config['webroot'] = "webworm";
 
+/* Debug mode */
+$config['debug'] = false;

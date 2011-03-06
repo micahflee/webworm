@@ -13,6 +13,56 @@ class UserModel extends phpDataMapper_Base {
 		global $phpass;
 		return $phpass->HashPassword($password);		
 	}
+
+	public function create($data) {
+		global $models;
+
+		// validation
+		$errors = array();
+		if($data['password'] != $data['password2']) {
+			array_push($errors, array(
+				'field' => 'password',
+				'message' => 'Passwords do not match'
+			));
+		}
+		if(empty($data['username'])) {
+			array_push($errors, array(
+				'field' => 'username',
+				'message' => 'Must enter a username'
+			));
+		}
+		if(empty($data['password'])) {
+			array_push($errors, array(
+				'field' => 'password',
+				'message' => 'Must enter a password'
+			));
+		}
+		$user = $models['user']->first(array('username' => $data['username']));
+		if($user != false) {
+			array_push($errors, array(
+				'field' => 'username',
+				'message' => 'Username already taken'
+			));
+		}
+		
+		// try adding the user
+		if(empty($errors)) {
+			$user = $models['user']->get();
+			$user->username = $_REQUEST['username'];
+			$user->password = $models['user']->password($_REQUEST['password']);
+			$user->date_created = $models['user']->adapter()->dateFormat();
+			if(!$models['user']->save($user)) {
+				if(empty($errors)) {
+					array_push($errors, array(
+						'message' => 'There were errors'
+					));
+				}
+			}
+		}
+
+		if(empty($errors)) return true;
+		return $errors;
+	}
 }
 
 class User extends phpDataMapper_Entity {

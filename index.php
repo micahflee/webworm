@@ -2,19 +2,22 @@
 require('config.php');
 require('lib/boot.php');
 
-// route the request
+// what route is the user asking for?
 $method = strtolower($_SERVER['REQUEST_METHOD']);
-$controller = isset($_REQUEST['c']) ? $_REQUEST['c'] : 'user';
-$action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'login_screen';
+$controller = isset($_REQUEST['c']) ? $_REQUEST['c'] : 'dashboard';
+$action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
 
-// if there are no users, create one
-$controllers['setup']::check_for_setup();
-//echo("c: $controller, a: $action<br>");
+// override the route if needed
+$session->check_for_login();
+$controllers['setup']->check_for_setup();
 
-// valid controller?
+if($config['debug']) {
+	echo("<pre style=\"text-align:center; background-color:black; color:#999999; padding:5px; margin:0;\">c: $controller - a: $action - ".($session->logged_in() ? "logged in" : "not logged in")."</pre>");
+}
+
+// route the request
 $valid = true;
 if(isset($controllers[$controller])) {
-	// valid action?
 	if(method_exists($controllers[$controller], $action)) {
 		if($controllers[$controller]->run_before_filters()) {
 			$controllers[$controller]->$action();

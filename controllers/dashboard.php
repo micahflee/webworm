@@ -1,7 +1,8 @@
 <?php
 
 class DashboardController extends ApplicationController {
-	public function index() {
+	function index() {
+		echo('yay!');
 	}
 }
 

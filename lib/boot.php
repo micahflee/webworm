@@ -1,7 +1,7 @@
 <?php
 
 // start the session
-session_start();
+require('lib/session.php');
 
 // start views
 require('lib/views.php');
