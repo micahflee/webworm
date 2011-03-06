@@ -9,6 +9,7 @@ class ApplicationController {
 	}
 
 	function run_before_filters() {
+		if($this->_before_filters == null) $this->_before_filters = array();
 		$continue = true;
 		foreach($this->_before_filters as $method_name) {
 			if(method_exists($this, $method_name)) {

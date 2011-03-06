@@ -1,0 +1,72 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	position: relative;
+	background-color: #4F9F52;
+	padding: 5px;
+	color: #ffffff;
+	height: 17px;
+}
+
+#header h1 {
+	position: absolute;
+	top: 3px;
+	left: 10px;
+	font-size: 18px;
+	font-family: sans-serif;
+	font-weight: bold;
+	text-shadow: #3F7F42 3px 3px 5px;
+	margin: 0;
+	padding: 0;
+}
+
+#header #logout {
+	position: absolute;
+	top: 3px;
+	right: 10px;
+}
+
+#header #logout a {
+	font-size: 12px;
+	font-family: sans-serif;
+	font-weight: bold;
+	text-shadow: #3F7F42 3px 3px 5px;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	color: #CFFFD1;
+	border-bottom: 1px solid #8BDF8F;
+}
+
+#header #logout a:hover, #header #logout a:active {
+	color: #ffffff;
+}
+
+.cleared {
+	clear: both;
+}
+
+#wrapper {
+	position: relative;
+}
+
+#sidebar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 140px;
+	background-color: #f0f0f0;
+	padding: 10px;
+}
+
+#content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 170px;
+	padding: 10px;
+}
+

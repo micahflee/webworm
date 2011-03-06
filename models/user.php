@@ -67,9 +67,11 @@ class UserModel extends phpDataMapper_Base {
 
 class User extends phpDataMapper_Entity {
 	public function feeds() {
-		return $this->query(
-			"SELECT * FROM feeds LEFT JOIN user_feeds ON user_feeds.feed_id = feeds.id WHERE user_feeds.user_id = :user_id", 
-			array('user_id' => $this->id)
+		global $models;
+
+		return $models['user']->query(
+			"SELECT * FROM feeds JOIN user_feeds ON user_feeds.feed_id = feeds.id WHERE user_feeds.user_id = ?", 
+			array($this->id)
 		);
 	}
 

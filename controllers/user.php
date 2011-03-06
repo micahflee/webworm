@@ -47,7 +47,7 @@ class UserController extends ApplicationController {
 	function logout() {
 		global $session, $helpers, $config;
 		$session->logout();
-		$helpers->redirect($config['weboot']."/");
+		$helpers->redirect($config['webroot']."/");
 	}
 }
 

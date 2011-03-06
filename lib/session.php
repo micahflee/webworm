@@ -11,6 +11,10 @@ class Session {
 		$_SESSION['user']['username'] = $user->username;
 	}
 
+	function user_id() {
+		return $_SESSION['user']['id'];
+	}
+
 	function logout() {
 		session_unset();
 	}
