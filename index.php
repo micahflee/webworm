@@ -11,9 +11,6 @@ $action = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'index';
 $session->check_for_login();
 $controllers['setup']->check_for_setup();
 
-// display debug info if debug mode is enabled
-//$helpers->display_debug_info();
-
 // route the request
 $valid = true;
 if(isset($controllers[$controller])) {

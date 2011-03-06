@@ -15,10 +15,18 @@ class Views {
 
 	// render a view
 	public function render($filename, $data = array()) {
-		$content = $this->render_partial($filename, $data, $this->template);
+		// display debug info if debug mode is enabled
+		global $helpers;
+		$helpers->display_debug_info();
+
+		// render the content
 		$data = $this->_add_webroot($data);
+		$content = $this->render_partial($filename, $data);
+
+		// render the layout
 		$data = $this->_add_content($data, $content);
-		echo($this->render_partial($this->template, array('content' => $content)));
+		echo($this->render_partial($this->template, $data));
+
 		exit();
 	}
 
