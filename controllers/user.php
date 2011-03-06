@@ -2,7 +2,6 @@
 
 class UserController extends ApplicationController {
 	function __construct() {
-		$this->add_before_filter('set_template');
 	}
 
 	function login_screen() {

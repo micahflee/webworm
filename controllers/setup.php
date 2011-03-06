@@ -2,12 +2,11 @@
 
 class SetupController extends ApplicationController {
 	function __construct() {
-		$this->add_before_filter('only_allow_if_not_set_up');
-	}
-
-	function only_allow_if_not_set_up() {
-		global $models;
-		return ($models['user']->first() == false);
+		$this->add_before_filter(function(){
+			// only allow if not set up
+			global $models;
+			return ($models['user']->first() == false);
+		});
 	}
 
 	function check_for_setup() {

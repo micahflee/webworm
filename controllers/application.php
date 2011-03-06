@@ -3,17 +3,17 @@
 class ApplicationController {
 	protected $_before_filters;
 
-	function add_before_filter($method_name) {
+	function add_before_filter($func) {
 		if($this->_before_filters == null) $this->_before_filters = array();
-		array_push($this->_before_filters, $method_name);
+		array_push($this->_before_filters, $func);
 	}
 
 	function run_before_filters() {
 		if($this->_before_filters == null) $this->_before_filters = array();
 		$continue = true;
-		foreach($this->_before_filters as $method_name) {
-			if(method_exists($this, $method_name)) {
-				if($this->$method_name() === false) $continue = false;
+		foreach($this->_before_filters as $func) {
+			if(is_callable($func)) {
+				if($func() === false) $continue = false;
 			}
 		}
 		return $continue;

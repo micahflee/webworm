@@ -1,17 +1,13 @@
 <?php
 
 class ReaderController extends ApplicationController {
-	// before filters
-
 	function __construct() {
-		$this->add_before_filter('only_allow_if_logged_in');
+		$this->add_before_filter(function(){
+			// allow only if logged in
+			global $session;
+			return $session->logged_in();
+		});
 	}
-
-	function only_allow_if_logged_in() {
-		global $session;
-	}
-
-	// actions
 
 	function index() {
 		global $views;
