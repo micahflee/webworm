@@ -3,10 +3,7 @@
 $config = array();
 
 /* MySQL info */
-$config['mysql_host'] = 'localhost';
-$config['mysql_username'] = '';
-$config['mysql_password'] = '';
-$config['mysql_database'] = '';
+$config['mysql_string'] = 'mysql://username:password@localhost/database_name';
 
 /* Define the webroot here
  * If webworm is installed in the root of your directory structure, leave 

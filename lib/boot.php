@@ -12,14 +12,11 @@ require('lib/helpers.php');
 $helpers = new Helpers;
 
 // set up the database
-require('vendor/phpDataMapper/Base.php');
-require('vendor/phpDataMapper/Adapter/Mysql.php');
-try {
-	$adapter = new phpDataMapper_Adapter_Mysql($config['mysql_host'], $config['mysql_database'], $config['mysql_username'], $config['mysql_password']);
-} catch(Exception $e) {
-	echo($views->render_partial("error/database_error", array('error' => $e->getMessage())));
-	exit();
-}
+require('vendor/php-activerecord/ActiveRecord.php');
+ActiveRecord\Config::initialize(function($cfg) {
+	$cfg->set_model_directory('models');
+	$cfg->set_connections(array('development' => $config['mysql_string']));
+});
 
 // load all the models
 $models = array();

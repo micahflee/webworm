@@ -4,19 +4,16 @@ class SetupController extends ApplicationController {
 	function __construct() {
 		$this->add_before_filter(function(){
 			// only allow if not set up
-			global $models;
-			return ($models['user']->first() == false);
+			return (User::first() == null);
 		});
 	}
 
 	function check_for_setup() {
-		global $models, $controller, $action;
+		global $controller, $action;
 
-		if($models['user']->first() == false) {
-			$controller = 'setup';
-			if($action != 'create_first_user' && $action != 'setup_complete') {
-				$action = 'first_user';
-			}
+		$controller = 'setup';
+		if($action != 'create_first_user' && $action != 'setup_complete') {
+			$action = 'first_user';
 		}
 	}
 
@@ -27,18 +24,19 @@ class SetupController extends ApplicationController {
 	}
 
 	function create_first_user() {
-		global $views, $models;
+		// TODO: finish making this work with activerecord
+
+		global $views;
 
 		// set the layout
 		$views->template = 'setup/layout';
 
 		// try creating the user
-		$errors = $models['user']->create(array(
+		$user = new User(array(
 			'username' => $_REQUEST['username'],
 			'password' => $_REQUEST['password'],
-			'password2' => $_REQUEST['password2']
 		));
-		
+
 		// yay, setup complete
 		if($errors === true) {
 			$views->render('setup/setup_complete');

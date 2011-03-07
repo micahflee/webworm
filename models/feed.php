@@ -1,12 +1,8 @@
 <?php
 
-class FeedModel extends phpDataMapper_Base {
-    protected $_datasource = "feeds";
-		
-    public $id = array('type' => 'int', 'primary' => true, 'serial' => true);
-    public $feed_url = array('type' => 'string', 'required' => true);
-    public $date_created = array('type' => 'datetime');
+class Feed extends ActuveRecord\Model {
+	static $has_many = array(
+		array('user_feeds'),
+		array('users', 'through' => 'user_feeds')
+	);
 }
-
-$models['feed'] = new FeedModel($adapter);
-$models['feed']->migrate();
