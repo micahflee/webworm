@@ -18,10 +18,12 @@ class ReaderController extends ApplicationController {
 	// ajax actions
 	
 	function load_feeds() {
-		global $models, $session;
-		$user = $models['user']->get($session->user_id());
-		$feeds = $user->feeds();
-		echo(json_encode($feeds));
+		global $session;
+		$user = User::find($session->user_id());
+		foreach($user->feeds as $feed) {
+			echo("<p>".$feed->feed_url."</p>");
+		}
+		//echo(json_encode($user->feeds));
 	}
 
 	function load_more_posts() {

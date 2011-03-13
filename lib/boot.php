@@ -14,6 +14,7 @@ $helpers = new Helpers;
 // set up the database
 require('vendor/php-activerecord/ActiveRecord.php');
 ActiveRecord\Config::initialize(function($cfg) {
+	global $config;
 	$cfg->set_model_directory('models');
 	$cfg->set_connections(array('development' => $config['mysql_string']));
 });

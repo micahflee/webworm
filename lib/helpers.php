@@ -12,4 +12,12 @@ class Helpers {
 			echo("<pre style=\"text-align:center; background-color:black; color:#999999; padding:5px; margin:0;\"><span style=\"color:#666666\">[DEBUG INFO]</span>  controller: <span style=\"color:#ffffff\">$controller</span> - action: <span style=\"color:#ffffff\">$action</span> - method: <span style=\"color:#ffffff\">$method</span> - ".($session->logged_in() ? "<span style=\"color:#ffffff\">logged in</span>" : "not logged in")."</pre>");
 		}
 	}
+
+	function convert_errors_for_mustache($errors) {
+		$new_errors = array();
+		foreach($errors as $error) {
+			$new_errors[] = array('message' => $error);
+		}
+		return $new_errors;
+	}
 }

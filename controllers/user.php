@@ -1,9 +1,6 @@
 <?php
 
 class UserController extends ApplicationController {
-	function __construct() {
-	}
-
 	function login_screen() {
 		global $models, $views, $session, $helpers, $config;
 
@@ -21,7 +18,7 @@ class UserController extends ApplicationController {
 		// valid username and password?
 		$error = false;
 		if(empty($_REQUEST['username']) || empty($_REQUEST['password'])) $error = true;
-		$user = $models['user']->first(array('username' => $_REQUEST['username']));
+		$user = User::first(array('conditions' => array('username' => $_REQUEST['username'])));
 		if($user) {
 			if(!$user->verify_password($_REQUEST['password'])) {
 				$error = true;
