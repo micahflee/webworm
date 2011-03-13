@@ -3,7 +3,7 @@ body {
 	padding: 0;
 }
 
-#header {
+#ww-header {
 	position: relative;
 	background-color: #4F9F52;
 	padding: 5px;
@@ -11,7 +11,7 @@ body {
 	height: 17px;
 }
 
-#header h1 {
+#ww-header h1 {
 	position: absolute;
 	top: 3px;
 	left: 10px;
@@ -23,13 +23,13 @@ body {
 	padding: 0;
 }
 
-#header #logout {
+#ww-header #ww-logout {
 	position: absolute;
 	top: 3px;
 	right: 10px;
 }
 
-#header #logout a {
+#ww-header #ww-logout a {
 	font-size: 12px;
 	font-family: sans-serif;
 	font-weight: bold;
@@ -41,19 +41,20 @@ body {
 	border-bottom: 1px solid #8BDF8F;
 }
 
-#header #logout a:hover, #header #logout a:active {
+#ww-header #ww-logout a:hover, #ww-header #ww-logout a:active {
 	color: #ffffff;
 }
 
-.cleared {
+.ww-cleared {
 	clear: both;
 }
 
-#wrapper {
+#ww-wrapper {
 	position: relative;
+	font-family: sans-serif;
 }
 
-#sidebar {
+#ww-sidebar {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -62,11 +63,24 @@ body {
 	padding: 10px;
 }
 
-#content {
+#ww-content {
 	position: absolute;
 	top: 0;
 	left: 0;
 	margin-left: 170px;
 	padding: 10px;
+}
+
+.ww-button {
+	cursor: pointer;
+	background-color: #30476F;
+	color: #FFFFFF;
+	padding: 3px;
+	text-align: center;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	font-family: sans-serif;
+	font-size: 11px;
+	font-weight: bold;
 }
 

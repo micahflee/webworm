@@ -3,22 +3,29 @@
 		<title>Webworm</title>
 		<link type="text/css" rel="stylesheet" href="{{webroot}}/static/css/reader.css" />
 		<script src="{{webroot}}/static/js/jquery.min.js"></script>
+		<script src="{{webroot}}/static/js/helpers.js"></script>
 		<script src="{{webroot}}/static/js/reader.js"></script>
+		<script>
+			$(function() {
+				var reader = new Reader();
+				reader.load_feeds();
+			});
+		</script>
 	</head>
 	<body>
-		<div id="header">	
+		<div id="ww-header">	
 			<h1>webworm</h1>
-			<div id="logout"><a href="{{webroot}}/?c=user&a=logout">Logout</a></div>
-			<div class="cleared"></div>
+			<div id="ww-logout"><a href="{{webroot}}/?c=user&a=logout">Logout</a></div>
+			<div class="ww-cleared"></div>
 		</div>
 
-		<div id="wrapper">
-			<div id="sidebar">
-				<div id="add-feed">Add Feed</div>
-				<div id="feeds"></div>
+		<div id="ww-wrapper">
+			<div id="ww-sidebar">
+				<div id="ww-add-feed" class="ww-button">Add Feed</div>
+				<div id="ww-feeds"></div>
 			</div>
 
-			<div id="content">
+			<div id="ww-content">
 				the content
 			</div>
 		</div>
